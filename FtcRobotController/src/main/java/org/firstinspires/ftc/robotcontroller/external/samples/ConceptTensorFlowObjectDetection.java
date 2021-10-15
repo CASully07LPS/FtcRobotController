@@ -126,13 +126,17 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
         telemetry.update();
         waitForStart();
 
+      
+      //if the robot is following any set of coded instructions
         if (opModeIsActive()) {
             while (opModeIsActive()) {
-                if (tfod != null) {
-                    // getUpdatedRecognitions() will return null if no new information is available since
-                    // the last time that call was made.
+              //If tfod doesn't detect nothing (if it detects something)
+                if (tfod != null) 
+                  //Update the list of recognized objects
                     List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
+                    //If there is a new object
                     if (updatedRecognitions != null) {
+                      //Add the object to the list of recognized objects
                       telemetry.addData("# Object Detected", updatedRecognitions.size());
 
                       // step through the list of recognitions and display boundary info.
